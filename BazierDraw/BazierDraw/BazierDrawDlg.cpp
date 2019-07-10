@@ -506,7 +506,7 @@ BOOL funcCalcArc3Org(CPoint point[4],  int nTotalNeedle, int nTotalRevolution, i
          dGradientEnd = (double)(pointTemp[1].y - pointTemp[3].y) / (pointTemp[3].x - pointTemp[1].x);
          dGradientMiddle = (double)pointTemp[0].y / pointTemp[3].x;
 
-         BazerFunc.Init(nX, nY, pointTemp);
+         BazerFunc.Init(pointTemp);
 
          //for (int i = 0; i < 4; ++i)
          //{
@@ -517,7 +517,7 @@ BOOL funcCalcArc3Org(CPoint point[4],  int nTotalNeedle, int nTotalRevolution, i
       }
       else
       {
-         BazerFunc.Init(nX, nY, point);
+         BazerFunc.Init(point);
       }
 
       //if (dGradientStart > 1)
@@ -923,7 +923,7 @@ BOOL funcCalcArc3Org(CPoint point[4],  int nTotalNeedle, int nTotalRevolution, i
    else if (STEP_BY_STEP_CALC_TOLERANCE_AND_CHECK_GRADIENT_CHECK_LAST_METHOD_AND_CAN_OVER_END_RADIENT_SAVE_ITEM_ANALYZE == eMethod)
    {
       CBazierDrawFast BazerFunc;
-      BazerFunc.Init(nX, nY, point);
+      BazerFunc.Init(point);
 
       enum
       {

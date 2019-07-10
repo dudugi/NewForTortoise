@@ -112,7 +112,7 @@ int CBazierDrawFast::funcGetXByY(int y)
    return m_mapXByY[y];
 }
 
-BOOL CBazierDrawFast::Init(int nX, int nY, CPoint point[4])
+BOOL CBazierDrawFast::Init(CPoint point[4])
 {
    m_nMostY = point[0].y;
    m_nMostX = point[3].x;

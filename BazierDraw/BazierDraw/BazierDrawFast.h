@@ -7,7 +7,7 @@ class CBazierDrawFast:public IBazierFunc
 {
 public:
    CBazierDrawFast();
-   BOOL Init(int nx, int ny, CPoint point[4]);
+   BOOL Init(CPoint point[4]);
    int funcGetYByX(int x);
    int funcGetXByY(int y);
 private:
