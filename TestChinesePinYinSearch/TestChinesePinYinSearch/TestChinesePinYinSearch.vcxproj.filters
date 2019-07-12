@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="LYComBox">
+      <UniqueIdentifier>{e1f98d74-2613-43cf-a3f2-7e310be4e242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonChatContent">
+      <UniqueIdentifier>{0a65b794-f713-4aa1-a178-5010aaf7cc6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bubble">
+      <UniqueIdentifier>{7e860660-3fd4-469a-9121-cf4f9071049b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{35839bc6-e9c3-4aaf-b329-3727f7cc526a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PinYinComboBox">
+      <UniqueIdentifier>{6fadce7b-46e1-43e6-b371-67609a288a2d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\TestChinesePinYinSearch.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\TestChinesePinYinSearch.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\bitmap1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon1.ico">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestChinesePinYinSearch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TestChinesePinYinSearchDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LYComBox.h">
+      <Filter>LYComBox</Filter>
+    </ClInclude>
+    <ClInclude Include="LY2ComBox.h">
+      <Filter>LYComBox</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonChatContent\DlgCommonChatContent.h">
+      <Filter>CommonChatContent</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonChatContent\FrequentlyChatContentFile.h">
+      <Filter>CommonChatContent</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonChatContent\ListBoxHover.h">
+      <Filter>CommonChatContent</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubble\MyBubble.h">
+      <Filter>Bubble</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonChatContent\QLChatString.h">
+      <Filter>CommonChatContent</Filter>
+    </ClInclude>
+    <ClInclude Include="PinYinComboBox\PinYinComboBox.h">
+      <Filter>PinYinComboBox</Filter>
+    </ClInclude>
+    <ClInclude Include="PinYinComboBox\PinYinComboBoxList.h">
+      <Filter>PinYinComboBox</Filter>
+    </ClInclude>
+    <ClInclude Include="PinYinComboBox\PinYinComboBoxDlg.h">
+      <Filter>PinYinComboBox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TestChinesePinYinSearch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestChinesePinYinSearchDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LYComBox.cpp">
+      <Filter>LYComBox</Filter>
+    </ClCompile>
+    <ClCompile Include="LY2ComBox.cpp">
+      <Filter>LYComBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonChatContent\DlgCommonChatContent.cpp">
+      <Filter>CommonChatContent</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonChatContent\FrequentlyChatContentFile.cpp">
+      <Filter>CommonChatContent</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonChatContent\ListBoxHover.cpp">
+      <Filter>CommonChatContent</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubble\MyBubble.cpp">
+      <Filter>Bubble</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonChatContent\QLChatString.cpp">
+      <Filter>CommonChatContent</Filter>
+    </ClCompile>
+    <ClCompile Include="PinYinComboBox\PinYinComboBox.cpp">
+      <Filter>PinYinComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="PinYinComboBox\PinYinComboBoxList.cpp">
+      <Filter>PinYinComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="PinYinComboBox\PinYinComboBoxDlg.cpp">
+      <Filter>PinYinComboBox</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TestChinesePinYinSearch.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
