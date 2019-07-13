@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include <list>
 
 
 // CTestDragFileFromClipboardDlg 对话框
@@ -22,7 +23,8 @@ public:
 // 实现
 protected:
 	HICON m_hIcon;
-
+   BOOL HasClipFile();
+   BOOL GetClipFilePaths(std::list<CString> *pListPaths);
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
@@ -30,4 +32,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
    afx_msg void OnBnClickedButton1();
+   afx_msg void OnBnClickedBtnTesthasclipfile();
 };

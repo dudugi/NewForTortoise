@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(CTestDragFileFromClipboardDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
    ON_BN_CLICKED(IDC_BUTTON1, &CTestDragFileFromClipboardDlg::OnBnClickedButton1)
+   ON_BN_CLICKED(IDC_BTN_TESTHASCLIPFILE, &CTestDragFileFromClipboardDlg::OnBnClickedBtnTesthasclipfile)
 END_MESSAGE_MAP()
 
 
@@ -87,44 +88,85 @@ HCURSOR CTestDragFileFromClipboardDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+BOOL CTestDragFileFromClipboardDlg::GetClipFilePaths(std::list<CString> *pListPaths)
+{
+   if (!OpenClipboard())//打开剪贴板  
+      return FALSE;
 
+   if (!IsClipboardFormatAvailable(CF_HDROP))//判断格式是否是我们所需要  
+   {
+      CloseClipboard();
+      return FALSE;
+   }
+   std::list<CString> ListPaths;
+   int cch;
+   LPTSTR lpszFile;
+   //读取数据  
+   HDROP hDrop=(HDROP)GetClipboardData(CF_HDROP);  
+   int iFiles=DragQueryFile(hDrop,-1,NULL,0);
+   for (int i = 0; i < iFiles; i++)
+   {
+      cch = DragQueryFile(hDrop,i,NULL,0);
+      CString str;
+      DragQueryFile(hDrop,i,str.GetBuffer(cch + 1),cch+1);
+      str.ReleaseBuffer();
+      if (!::PathIsDirectory(str))
+      {
+         ListPaths.push_back(str);
+      }
+   }
+   CloseClipboard();
+   if (ListPaths.empty())
+      return FALSE;
+   if (pListPaths)
+      pListPaths->swap(ListPaths);
+   return TRUE;
+}
 
 void CTestDragFileFromClipboardDlg::OnBnClickedButton1()
 {
-   if (OpenClipboard())//打开剪贴板  
-   {  
-      if (IsClipboardFormatAvailable(CF_HDROP))//判断格式是否是我们所需要  
-      {  
-         CString strAll;
-         int i;
-         int cch;
-         LPTSTR lpszFile;
-         //读取数据  
-         HDROP hDrop=(HDROP)GetClipboardData(CF_HDROP);  
-         int iFiles=DragQueryFile(hDrop,-1,NULL,0);
-         for (i=0;i<iFiles;i++)
-         {
-            cch=DragQueryFile(hDrop,i,NULL,0);
-            //lpszFile=(LPTSTR)GlobalAlloc(GPTR,cch+1);
-            //WCHAR *p = new WCHAR[cch + 1];
-            CString str;
-            DragQueryFile(hDrop,i,str.GetBuffer(cch + 1),cch+1);
-            //GlobalFree(lpszFile);
-            //delete [] p;
-            str.ReleaseBuffer();
-            if (::PathIsDirectory(str))
-            {
-               str += _T("\\");
-            }
-            //TRACE(_T("%s\n"), str);
-            if (!strAll.IsEmpty())
-               strAll += _T("\n");
-            strAll += str;
-         }
-
-         MessageBox(strAll);
-      }
-
-      CloseClipboard();  
+   std::list<CString> lstPaths;
+   if (!GetClipFilePaths(&lstPaths))
+   {
+      MessageBox(_T("None"));
+      return;
    }
+   CString strAll;
+   for (auto Iter = lstPaths.begin(); Iter != lstPaths.end(); ++Iter)
+   {
+      if (!strAll.IsEmpty())
+         strAll += _T("\n");
+      strAll += *Iter;
+   }
+
+   MessageBox(strAll);
+}
+
+BOOL CTestDragFileFromClipboardDlg::HasClipFile()
+{
+   if (!OpenClipboard())//打开剪贴板
+      return FALSE;
+
+   BOOL bRet = FALSE;
+   if (IsClipboardFormatAvailable(CF_HDROP))//判断格式是否是我们所需要  
+   {  
+      //读取数据  
+      HDROP hDrop=(HDROP)GetClipboardData(CF_HDROP);  
+      int iFiles=DragQueryFile(hDrop,-1,NULL,0);
+      if (iFiles > 0)
+         bRet = TRUE;
+   }
+
+   CloseClipboard();
+   return bRet;
+}
+
+void CTestDragFileFromClipboardDlg::OnBnClickedBtnTesthasclipfile()
+{
+   if (!HasClipFile())
+   {
+      MessageBox(_T("None"));
+      return;
+   }
+   MessageBox(_T("Has"));
 }
