@@ -165,8 +165,10 @@ BOOL CFileTransferTestDemoDlg::OnInitDialog()
    SetWindowText(_T("¥´ ‰ø‚≤‚ ‘≥Ã–Ú   ∞Ê±æ∫≈:") + strVersion);*/
 
 #ifdef _DEBUG
-   SetDlgItemText(IDC_ET_KEY,_T("File_BackUp_Process"));
-   SetDlgItemText(IDC_ET_ORDER,_T("Œ‚∑®…≠"));
+   //SetDlgItemText(IDC_ET_KEY,_T("File_BackUp_Process")); File_Pattern
+   SetDlgItemText(IDC_ET_KEY,_T("File_Pattern"));
+   SetDlgItemText(IDC_ET_SIZE, _T("M"));
+   SetDlgItemText(IDC_ET_ORDER,_T("w070402"));
 #endif // _DEBUG
 
 
