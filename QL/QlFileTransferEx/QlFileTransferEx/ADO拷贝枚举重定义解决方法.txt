@@ -1,0 +1,5 @@
+#import "msado15.dll" no_namespace \
+rename("EOF","adoEOF") rename("DataTypeEnum","adoDataTypeEnum") \
+rename("FieldAttributeEnum", "adoFielAttributeEnum") rename("EditModeEnum", "adoEditModeEnum") \
+rename("LockTypeEnum", "adoLockTypeEnum") rename("RecordStatusEnum", "adoRecordStatusEnum") \
+rename("ParameterDirectionEnum", "adoParameterDirectionEnum")

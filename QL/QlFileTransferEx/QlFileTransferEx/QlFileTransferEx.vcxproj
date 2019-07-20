@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugU|Win32">
+      <Configuration>DebugU</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseU|Win32">
+      <Configuration>ReleaseU</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7DCE5CC3-7D9A-4501-986F-64CC261024EC}</ProjectGuid>
+    <RootNamespace>QlFileTransferEx</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugU|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseU|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\PDM_BaseInclude.vsprops" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugU|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\PDM_BaseInclude.vsprops" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\PDM_BaseInclude.vsprops" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseU|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\PDM_BaseInclude.vsprops" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+    <IntDir>Cache\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\Common\CommonInclude\lib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\Common\CommonInclude\lib\crypto\lib\Debug;..\..\..\Common\CommonInclude\lib\curl\Debug;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugU|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_ud</TargetName>
+    <IntDir>Cache\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\Common\CommonInclude\lib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\Common\CommonInclude\lib\crypto\lib\Debug;..\..\..\Common\CommonInclude\lib\curl\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>Cache\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\Common\CommonInclude\lib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\Common\CommonInclude\lib\crypto\lib\Release;..\..\..\Common\CommonInclude\lib\curl\Release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseU|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_u</TargetName>
+    <IntDir>Cache\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\Common\CommonInclude\lib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\Common\CommonInclude\lib\crypto\lib\Release;..\..\..\Common\CommonInclude\lib\curl\Release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;ADO_ENUM_ERR;FILETRNAS_BUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonClass\ClassEx;..\..\CommonClass\;.</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\QlFileTransferEx.def</ModuleDefinitionFile>
+      <AdditionalDependencies>$(SolutionDir)\Lib_ProgressLoading\Cache\$(Configuration)\Lib_ProgressLoading.res;libcurl.lib;cryptlib.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugU|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;ADO_ENUM_ERR;FILETRNAS_BUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonClass\ClassEx;..\..\CommonClass\;.</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\QlFileTransferEx.def</ModuleDefinitionFile>
+      <AdditionalDependencies>$(SolutionDir)\Lib_ProgressLoading\Cache\$(Configuration)\Lib_ProgressLoading.res;libcurl.lib;cryptlib.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;ADO_ENUM_ERR;FILETRNAS_BUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonClass\ClassEx;..\..\CommonClass\;.</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\QlFileTransferEx.def</ModuleDefinitionFile>
+      <AdditionalDependencies>$(SolutionDir)\Lib_ProgressLoading\Cache\$(Configuration)\Lib_ProgressLoading.res;libcurl.lib;cryptlib.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseU|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;ADO_ENUM_ERR;FILETRNAS_BUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonClass\ClassEx;..\..\CommonClass\;.</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\QlFileTransferEx.def</ModuleDefinitionFile>
+      <AdditionalDependencies>$(SolutionDir)\Lib_ProgressLoading\Cache\$(Configuration)\Lib_ProgressLoading.res;libcurl.lib;cryptlib.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="FT_String.inl" />
+    <None Include="QlFileTransferEx.def" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\QlFileTransferEx.rc2" />
+    <None Include="res\xml\FileTransPathSetting.xml" />
+    <None Include="res\xml\FileTransSetting.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\ADOConn\ADOConn.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\ADOConn\DBImage.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\Base64Code.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\CommonAPI.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\MySerial.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\Network\MyNetwork.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBCustomInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBDataDictionary.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBDesDensity.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBPersonInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBProSet_Style.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBSizeInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBStyleInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBVariousStyleInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassDB\DBYarnInfo.cpp" />
+    <ClCompile Include="..\..\CommonClass\ClassEx\DataMid.cpp" />
+    <ClCompile Include="ADOConnEx.cpp" />
+    <ClCompile Include="base64.cpp" />
+    <ClCompile Include="CDBPtLogInfo_new.cpp" />
+    <ClCompile Include="CPtLog.cpp" />
+    <ClCompile Include="FileTransferIO.cpp" />
+    <ClCompile Include="FileTrans_Handle.cpp" />
+    <ClCompile Include="ftplib.cpp" />
+    <ClCompile Include="ftp_client.cpp" />
+    <ClCompile Include="FT_Option.cpp" />
+    <ClCompile Include="FT_params.cpp" />
+    <ClCompile Include="LoginDlg.cpp" />
+    <ClCompile Include="MD5\md5.cpp" />
+    <ClCompile Include="MFCEditBrowserNoShell.cpp" />
+    <ClCompile Include="QlFileTransferEx.cpp" />
+    <ClCompile Include="QL_HttpClient.cpp" />
+    <ClCompile Include="SpecItem.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugU|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseU|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThreadFileTrans.cpp" />
+    <ClCompile Include="Zip\unzip.cpp" />
+    <ClCompile Include="Zip\zip.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\ADOConn\ADOConn.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\ADOConn\DBImage.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\Base64Code.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\CommonAPI.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\MySerial.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\Network\MyNetwork.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\allocators.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\cursorstreamwrapper.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\document.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\encodedstream.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\encodings.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\error\en.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\error\error.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\filereadstream.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\filewritestream.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\fwd.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\itoa.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\meta.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\pow10.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\regex.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\stack.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\strtod.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\internal\swap.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\memorybuffer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\memorystream.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\pointer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\prettywriter.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\rapidjson.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\reader.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\schema.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\stream.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\stringbuffer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\rapidjson\writer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinystr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\Global\ClassEx\tinyxml\tinyxml.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\3way.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\adler32.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\adv-simd.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\aes.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\algebra.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\algparam.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\arc4.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\argnames.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\aria.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\asn.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\authenc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\base32.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\base64.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\basecode.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\bench.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\blake2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\blowfish.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\blumshub.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\camellia.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\cast.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\cbcmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ccm.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\chacha.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\channels.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\cmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\config.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\cpu.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\crc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\cryptlib.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\default.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\des.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\dh.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\dh2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\dll.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\dmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\drbg.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\dsa.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\eax.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ec2n.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\eccrypto.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ecp.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ecpoint.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\elgamal.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\emsa2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\eprecomp.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\esign.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\factory.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\fhmqv.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\files.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\filters.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\fips140.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\fltrimpl.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gcm.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gf256.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gf2n.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gf2_32.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gfpcrypt.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gost.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\gzip.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hashfwd.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hex.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hkdf.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hmqv.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\hrtimer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ida.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\idea.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\integer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\iterhash.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\kalyna.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\keccak.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\lubyrack.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\luc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\mars.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\md2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\md4.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\md5.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\mdc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\mersenne.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\misc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\modarith.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\modes.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\modexppc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\mqueue.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\mqv.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\naclite.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\nbtheory.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\network.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\nr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\oaep.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\oids.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\osrng.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ossig.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\padlkrng.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\panama.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\pch.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\pkcspad.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\poly1305.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\polynomi.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ppc-simd.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\pssr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\pubkey.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\pwdbased.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\queue.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rabin.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\randpool.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rc2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rc5.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rc6.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rdrand.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\resource.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rijndael.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ripemd.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rng.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rsa.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\rw.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\safer.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\salsa.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\scrypt.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\seal.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\secblock.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\seckey.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\seed.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\serpent.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\serpentp.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\sha.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\sha3.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\shacal2.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\shark.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\simon.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\simple.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\siphash.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\skipjack.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\sm3.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\sm4.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\smartptr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\socketft.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\sosemanuk.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\speck.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\square.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\stdcpp.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\strciphr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\tea.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\threefish.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\tiger.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\trap.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\trdlocal.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\trunhash.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\ttmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\tweetnacl.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\twofish.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\validate.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\vmac.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\wait.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\wake.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\whrlpool.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\winpipes.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\words.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\xtr.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\xtrcrypt.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\zdeflate.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\zinflate.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\crypto\include\zlib.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\curl.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\curlver.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\easy.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\mprintf.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\multi.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\stdcheaders.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\system.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\typecheck-gcc.h" />
+    <ClInclude Include="..\..\..\Common\CommonInclude\lib\curl\urlapi.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBCustomInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBDataDictionary.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBDesDensity.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBPersonInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBProSet_Style.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBSizeInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBStyleInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBVariousStyleInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassDB\DBYarnInfo.h" />
+    <ClInclude Include="..\..\CommonClass\ClassEx\DataMid.h" />
+    <ClInclude Include="..\..\CommonClass\ClassEx\DBDef.h" />
+    <ClInclude Include="..\..\CommonClass\ClassEx\DBKeyDef.h" />
+    <ClInclude Include="..\Lib_ProgressLoading\Lib_ProcessIO.h" />
+    <ClInclude Include="ADOConnEx.h" />
+    <ClInclude Include="base64.h" />
+    <ClInclude Include="CDBPtLogInfo.h" />
+    <ClInclude Include="CDBPtLogInfo_new.h" />
+    <ClInclude Include="CPtLog.h" />
+    <ClInclude Include="FileTransData.h" />
+    <ClInclude Include="FileTransferDef.inl" />
+    <ClInclude Include="FileTransferIO.h" />
+    <ClInclude Include="FileTrans_Handle.h" />
+    <ClInclude Include="ftplib.h" />
+    <ClInclude Include="ftp_client.h" />
+    <ClInclude Include="FT_Option.h" />
+    <ClInclude Include="FT_params.h" />
+    <ClInclude Include="LoginDlg.h" />
+    <ClInclude Include="ManagedExt.h" />
+    <ClInclude Include="MD5\md5.h" />
+    <ClInclude Include="MFCEditBrowserNoShell.h" />
+    <ClInclude Include="QlFileTransferEx.h" />
+    <ClInclude Include="QL_HttpClient.h" />
+    <ClInclude Include="QL_HttpErrorCode.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SpecItem.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ThreadFileTrans.h" />
+    <ClInclude Include="Zip\unzip.h" />
+    <ClInclude Include="Zip\zip.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QlFileTransferEx.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="QlFileTransferEx.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

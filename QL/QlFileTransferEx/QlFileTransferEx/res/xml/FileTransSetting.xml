@@ -1,0 +1,30 @@
+<FileTransSetting>
+	<Port>
+		<DBPort>
+			<Default>
+				1433
+			</Default>
+			<Description>
+				数据库端口默认值
+			</Description>
+		</DBPort>
+		<FilePort>
+			<FTP>
+				<Default>
+					21
+				</Default>
+				<Description>
+					FTP文件端口的默认值
+				</Description>
+			</FTP>
+			<HTTP>
+				<Default>
+					8088
+				</Default>
+				<Description>
+					HTTP模式的文件端口默认值
+				</Description>
+			</HTTP>
+		</FilePort>
+	</Port>
+</FileTransSetting>

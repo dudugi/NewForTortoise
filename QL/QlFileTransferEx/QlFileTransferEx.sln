@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QlFileTransferEx", "QlFileTransferEx\QlFileTransferEx.vcxproj", "{7DCE5CC3-7D9A-4501-986F-64CC261024EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lib_ProgressLoading", "Lib_ProgressLoading\Lib_ProgressLoading.vcxproj", "{355F9547-F3AC-4D9A-B94C-3883AA003E94}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileTransferTestDemo", "FileTransferTestDemo\FileTransferTestDemo.vcxproj", "{93BCDB5D-1EC2-420B-AAC1-33BC4FC3A6C4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CreateFileTransPathSettingXml", "CreateFileTransPathSettingXml\CreateFileTransPathSettingXml.vcxproj", "{43541A97-58AB-4BCC-A0BE-6FCBA2CF7FB8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CFileTransClass_Demo", "CFileTransClass_Demo\CFileTransClass_Demo.vcxproj", "{27FC15DA-0B26-41EB-823A-29378FA19BC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugU|Win32 = DebugU|Win32
+		Release|Win32 = Release|Win32
+		ReleaseU|Win32 = ReleaseU|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.Debug|Win32.Build.0 = Debug|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.DebugU|Win32.ActiveCfg = DebugU|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.DebugU|Win32.Build.0 = DebugU|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.Release|Win32.ActiveCfg = Release|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.Release|Win32.Build.0 = Release|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.ReleaseU|Win32.ActiveCfg = ReleaseU|Win32
+		{7DCE5CC3-7D9A-4501-986F-64CC261024EC}.ReleaseU|Win32.Build.0 = ReleaseU|Win32
+		{355F9547-F3AC-4D9A-B94C-3883AA003E94}.Debug|Win32.ActiveCfg = Debug|Win32
+		{355F9547-F3AC-4D9A-B94C-3883AA003E94}.DebugU|Win32.ActiveCfg = DebugU|Win32
+		{355F9547-F3AC-4D9A-B94C-3883AA003E94}.Release|Win32.ActiveCfg = Release|Win32
+		{355F9547-F3AC-4D9A-B94C-3883AA003E94}.ReleaseU|Win32.ActiveCfg = ReleaseU|Win32
+		{93BCDB5D-1EC2-420B-AAC1-33BC4FC3A6C4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{93BCDB5D-1EC2-420B-AAC1-33BC4FC3A6C4}.DebugU|Win32.ActiveCfg = DebugU|Win32
+		{93BCDB5D-1EC2-420B-AAC1-33BC4FC3A6C4}.Release|Win32.ActiveCfg = Release|Win32
+		{93BCDB5D-1EC2-420B-AAC1-33BC4FC3A6C4}.ReleaseU|Win32.ActiveCfg = ReleaseU|Win32
+		{43541A97-58AB-4BCC-A0BE-6FCBA2CF7FB8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{43541A97-58AB-4BCC-A0BE-6FCBA2CF7FB8}.DebugU|Win32.ActiveCfg = Debug|Win32
+		{43541A97-58AB-4BCC-A0BE-6FCBA2CF7FB8}.Release|Win32.ActiveCfg = Release|Win32
+		{43541A97-58AB-4BCC-A0BE-6FCBA2CF7FB8}.ReleaseU|Win32.ActiveCfg = Release|Win32
+		{27FC15DA-0B26-41EB-823A-29378FA19BC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27FC15DA-0B26-41EB-823A-29378FA19BC2}.DebugU|Win32.ActiveCfg = Debug|Win32
+		{27FC15DA-0B26-41EB-823A-29378FA19BC2}.Release|Win32.ActiveCfg = Release|Win32
+		{27FC15DA-0B26-41EB-823A-29378FA19BC2}.ReleaseU|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
