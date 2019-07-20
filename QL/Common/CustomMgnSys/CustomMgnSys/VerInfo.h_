@@ -1,0 +1,8 @@
+
+
+#pragma once
+
+
+
+#define FILE_VERSION  _T("$WCREV$")
+#define FILE_VER_DATE  _T("$WCNOW$")

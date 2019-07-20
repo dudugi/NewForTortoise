@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C0F39304-6DF0-4794-82EC-307FDBB328D5}</ProjectGuid>
+    <RootNamespace>CustomMgnSys</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\Debug\</OutDir>
+    <IncludePath>..\..\BCGPro\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\BCGPro\lib;$(LibraryPath)</LibraryPath>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\Release\</OutDir>
+    <IncludePath>..\..\BCGPro\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\BCGPro\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonInclude\Global\ClassEx\;.\Qprotect;.\;.\WorkLog;.\QLBCG;.\DB;..\..\..\个体户版\CommonClass\ClassEx\tinyxml;..\..\..\个体户版\CommonClass\ClassEx;.\ClassData;.\Macro;.\Dialog;.\ClassEx\GifSelf</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>.\Qprotect\libhasp_windows_103267.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\CommonInclude\Global\ClassEx\;.\Qprotect;.\;.\WorkLog;.\QLBCG;.\DB;..\..\..\个体户版\CommonClass\ClassEx\tinyxml;..\..\..\个体户版\CommonClass\ClassEx;.\ClassData;.\Macro;.\Dialog;.\ClassEx\GifSelf</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>.\Qprotect\libhasp_windows_103267.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreBuildEvent>
+      <Command>del VerInfo.h
+copy VerInfo.h_ VerInfo.h 
+subwcrev . VerInfo.h VerInfo.h</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\CustomMgnSys.ico" />
+    <None Include="res\CustomMgnSys.rc2" />
+    <None Include="res\Loading.gif" />
+    <None Include="res\logoSimple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\个体户版\CommonClass\ClassEx\DataMid.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\ADOConn\ADOConn.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\Base64Code.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\MyEncrypt.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\MySerial.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinystr.h" />
+    <ClInclude Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinyxml.h" />
+    <ClInclude Include="ClassData\CDataTableDlgDefine.h" />
+    <ClInclude Include="ClassData\CDataTableFieldDefine.h" />
+    <ClInclude Include="ClassData\CDataUserMsgDefine.h" />
+    <ClInclude Include="ClassData\CGridCtrlTableAttributeOp.h" />
+    <ClInclude Include="ClassData\ConfigInfo.h" />
+    <ClInclude Include="ClassData\MapInfoOpt.h" />
+    <ClInclude Include="ClassEx\ADOConnEx.h" />
+    <ClInclude Include="ClassEx\CUserMsgDefine.h" />
+    <ClInclude Include="ClassEx\EditEx\EditDoubleNum.h" />
+    <ClInclude Include="ClassEx\GifSelf\PictureEx.h" />
+    <ClInclude Include="CMFCDesktopAlert\CMFCDesktopAlertMid.h" />
+    <ClInclude Include="CustomMgnSys.h" />
+    <ClInclude Include="CustomMgnSysDlg.h" />
+    <ClInclude Include="DB\CDBFieldDefine.h" />
+    <ClInclude Include="DB\DBCusOpRecords.h" />
+    <ClInclude Include="DB\DBCustomer.h" />
+    <ClInclude Include="DB\DBUserInfo.h" />
+    <ClInclude Include="Dialog\DlgDesktop.h" />
+    <ClInclude Include="Dialog\DlgGridCtrlTableStyle.h" />
+    <ClInclude Include="Dialog\DlgLoading.h" />
+    <ClInclude Include="Dialog\DlgOrderLog.h" />
+    <ClInclude Include="Dialog\DlgStaffMgnTab.h" />
+    <ClInclude Include="Dialog\DlgStaffModify.h" />
+    <ClInclude Include="Dialog\DlgStaffSearch.h" />
+    <ClInclude Include="Dialog\CustomerMgn\DlgCusMgn.h" />
+    <ClInclude Include="Dialog\CustomerMgn\DlgCusModify.h" />
+    <ClInclude Include="Macro\rnfile.h" />
+    <ClInclude Include="Macro\rnmacro.h" />
+    <ClInclude Include="Macro\rnstring.h" />
+    <ClInclude Include="QLBCG\customcells.h" />
+    <ClInclude Include="QLBCG\DlgBCGGrid.h" />
+    <ClInclude Include="QLBCG\FoldGridCtrl.h" />
+    <ClInclude Include="QLBCG\QLBCGChartCtrl.h" />
+    <ClInclude Include="QLBCG\QLBCGGridCtrl.h" />
+    <ClInclude Include="QLBCG\QLBCGMESSAGE.h" />
+    <ClInclude Include="QLLogin\DlgLogin.h" />
+    <ClInclude Include="Qprotect\emulatordetect.h" />
+    <ClInclude Include="Qprotect\hasp_api.h" />
+    <ClInclude Include="Qprotect\LDK.h" />
+    <ClInclude Include="Qprotect\Sntl_CheckDLL.h" />
+    <ClInclude Include="Qprotect\sntl_licgen.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="VerInfo.h" />
+    <ClInclude Include="WorkLog\DBLogInfo.h" />
+    <ClInclude Include="WorkLog\DBWorkLogOperator.h" />
+    <ClInclude Include="WorkLog\WorkLog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\个体户版\CommonClass\ClassEx\DataMid.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\ADOConn\ADOConn.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\Base64Code.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\MyEncrypt.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\MySerial.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\CommonInclude\Global\ClassEx\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="ClassData\CGridCtrlTableAttributeOp.cpp" />
+    <ClCompile Include="ClassData\ConfigInfo.cpp" />
+    <ClCompile Include="ClassData\MapInfoOpt.cpp" />
+    <ClCompile Include="ClassEx\ADOConnEx.cpp" />
+    <ClCompile Include="ClassEx\EditEx\EditDoubleNum.cpp" />
+    <ClCompile Include="ClassEx\GifSelf\PictureEx.cpp" />
+    <ClCompile Include="CMFCDesktopAlert\CMFCDesktopAlertMid.cpp" />
+    <ClCompile Include="CustomMgnSys.cpp" />
+    <ClCompile Include="CustomMgnSysDlg.cpp" />
+    <ClCompile Include="DB\DBCusOpRecords.cpp" />
+    <ClCompile Include="DB\DBCustomer.cpp" />
+    <ClCompile Include="DB\DBUserInfo.cpp" />
+    <ClCompile Include="Dialog\DlgDesktop.cpp" />
+    <ClCompile Include="Dialog\DlgGridCtrlTableStyle.cpp" />
+    <ClCompile Include="Dialog\DlgLoading.cpp" />
+    <ClCompile Include="Dialog\DlgOrderLog.cpp" />
+    <ClCompile Include="Dialog\DlgStaffMgnTab.cpp" />
+    <ClCompile Include="Dialog\DlgStaffModify.cpp" />
+    <ClCompile Include="Dialog\DlgStaffSearch.cpp" />
+    <ClCompile Include="Dialog\CustomerMgn\DlgCusMgn.cpp" />
+    <ClCompile Include="Dialog\CustomerMgn\DlgCusModify.cpp" />
+    <ClCompile Include="QLBCG\customcells.cpp" />
+    <ClCompile Include="QLBCG\DlgBCGGrid.cpp" />
+    <ClCompile Include="QLBCG\FoldGridCtrl.cpp" />
+    <ClCompile Include="QLBCG\QLBCGChartCtrl.cpp" />
+    <ClCompile Include="QLBCG\QLBCGGridCtrl.cpp" />
+    <ClCompile Include="QLLogin\DlgLogin.cpp" />
+    <ClCompile Include="Qprotect\LDK.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WorkLog\DBLogInfo.cpp" />
+    <ClCompile Include="WorkLog\DBWorkLogOperator.cpp" />
+    <ClCompile Include="WorkLog\WorkLog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CustomMgnSys.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Qprotect\libemulatordetect.lib" />
+    <Library Include="Qprotect\libhasp_windows_103107.lib" />
+    <Library Include="Qprotect\libhasp_windows_103267.lib" />
+    <Library Include="Qprotect\sntl_checkdll_md.lib" />
+    <Library Include="Qprotect\sntl_licgen_windows.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CustomMgnSys.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

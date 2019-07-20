@@ -1,0 +1,15 @@
+#ifndef _CHECK_PROTECTED_LIB_
+#define _CHECK_PROTECTED_LIB_
+
+enum CheckRes
+{
+	SUCC_PROTECTED = 0,
+	SUCC_NOT_PROTECTED,
+	ERR_INPUT,
+	ERR_INTERNEL,
+	ERR_FILE_FORMAT
+};
+
+int CheckProtected(char* strFileName);
+
+#endif //_CHECK_PROTECTED_LIB_

@@ -150,7 +150,15 @@ BOOL CFileTransferTestDemoDlg::OnInitDialog()
    pCheck->SetCheck(1);
 
    //测试时可以调整此处设置默认路径
-   SetDlgItemText(IDC_ET_WORKPATH,_T("D:\svnD\BF-PDM"));
+   TCHAR szPath[MAX_PATH] = {0};
+   GetModuleFileName(NULL, szPath, MAX_PATH);
+
+   PathRemoveFileSpec(szPath);
+   PathRemoveFileSpec(szPath);
+   PathRemoveFileSpec(szPath);
+   _tcscat(szPath, _T("\\BF-PDM"));
+   SetDlgItemText(IDC_ET_WORKPATH, szPath);
+   //SetDlgItemText(IDC_ET_WORKPATH,_T("D:\svnD\BF-PDM"));
 
    /*CFileTransferEx oFileTrans(_T(""),_T(""),_T(""));
    CString strVersion = oFileTrans.GetVersion();

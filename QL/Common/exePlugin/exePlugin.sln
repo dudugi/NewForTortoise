@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogReport", "LogReport\LogReport.vcxproj", "{F2C028C3-58A8-4514-A4B2-7908B92C170C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XmlToFunc", "XmlToFunc\XmlToFunc.vcxproj", "{77221B59-2480-4DE9-B14F-D5581FE0AAFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2C028C3-58A8-4514-A4B2-7908B92C170C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F2C028C3-58A8-4514-A4B2-7908B92C170C}.Debug|Win32.Build.0 = Debug|Win32
+		{F2C028C3-58A8-4514-A4B2-7908B92C170C}.Release|Win32.ActiveCfg = Release|Win32
+		{F2C028C3-58A8-4514-A4B2-7908B92C170C}.Release|Win32.Build.0 = Release|Win32
+		{77221B59-2480-4DE9-B14F-D5581FE0AAFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77221B59-2480-4DE9-B14F-D5581FE0AAFF}.Debug|Win32.Build.0 = Debug|Win32
+		{77221B59-2480-4DE9-B14F-D5581FE0AAFF}.Release|Win32.ActiveCfg = Release|Win32
+		{77221B59-2480-4DE9-B14F-D5581FE0AAFF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

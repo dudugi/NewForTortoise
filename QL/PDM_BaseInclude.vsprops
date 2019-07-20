@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>..\..\CommonClass;..\..\CommonClass\ClassEx;..\..\CommonClass\ClassDB;..\..\..\Common\CommonInclude\Global;..\..\..\Common\CommonInclude\Global\ClassEx;..\..\..\Common\CommonInclude\Global\ClassEx\ADOConn;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\CommonClass;..\..\CommonClass\ClassEx;..\..\CommonClass\ClassDB;..\..\Common\CommonInclude\Global;..\..\Common\CommonInclude\Global\ClassEx;..\..\Common\CommonInclude\Global\ClassEx\ADOConn;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup />
