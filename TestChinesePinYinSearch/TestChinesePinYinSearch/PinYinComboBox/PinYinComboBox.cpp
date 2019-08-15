@@ -13,7 +13,7 @@ CPinYinComboBox::CPinYinComboBox()
 {
 }
 
-IMPLEMENT_DYNCREATE(CPinYinComboBox, CMFCEditBrowseCtrl)
+IMPLEMENT_DYNCREATE(CPinYinComboBox, CEdit)
 
 void CPinYinComboBox::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {

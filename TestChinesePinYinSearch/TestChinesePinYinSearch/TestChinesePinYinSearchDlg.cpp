@@ -10,6 +10,7 @@
 #include <iosfwd>
 #include <string>
 #include <sstream> 
+#include "PinYinComboBox\PinYinComboBox.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -63,11 +64,17 @@ void CTestChinesePinYinSearchDlg::OnBnClickedBtnDelusertext()
    }
 }
 
+CTestChinesePinYinSearchDlg::~CTestChinesePinYinSearchDlg()
+{
+	if (m_pPinYinCombobox) 
+		delete m_pPinYinCombobox;
+}
 
 CTestChinesePinYinSearchDlg::CTestChinesePinYinSearchDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CTestChinesePinYinSearchDlg::IDD, pParent)
    , m_sTextPinYin(_T(""))
    , m_sCBOBox2(_T(""))
+   , m_pPinYinCombobox(nullptr)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -79,7 +86,7 @@ void CTestChinesePinYinSearchDlg::DoDataExchange(CDataExchange* pDX)
    DDX_Control(pDX, IDC_COMBO1, m_cbo1);
    DDX_Control(pDX, IDC_COMBO2, m_cboBox2);
    DDX_Control(pDX, IDC_COMBOBOXEX1, m_cboExt);
-   DDX_Control(pDX, IDC_MFCEDITBROWSE_NAME, m_PinYinCombobox);
+   DDX_Control(pDX, IDC_MFCEDITBROWSE_NAME, *m_pPinYinCombobox);
    DDX_Control(pDX, IDC_EDIT_3, m_edit3);
 
    DDX_Text(pDX, IDC_MFCEDITBROWSE_NAME, m_sTextPinYin);
@@ -116,6 +123,8 @@ END_MESSAGE_MAP()
 
 BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 {
+	m_pPinYinCombobox = (CPinYinComboBox*)RUNTIME_CLASS(CPinYinComboBox)->CreateObject();
+	
 	CDialogEx::OnInitDialog();
 
 	// 将“关于...”菜单项添加到系统菜单中。
@@ -184,28 +193,28 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 
    //m_cboExt.AddString()
 
-  // m_PinYinCombobox.EnableBrowseButton(TRUE, _T("▼"));
-   m_PinYinCombobox.Init();
+  // m_pPinYinCombobox->EnableBrowseButton(TRUE, _T("▼"));
+   m_pPinYinCombobox->Init();
 
    //m_MFCEditBrowseCtrlName.AddStringNew()
 
 
-   m_PinYinCombobox.m_funcDeleteString = [this](const CString &sText)
+   m_pPinYinCombobox->m_funcDeleteString = [this](const CString &sText)
    {
       this->MessageBox(sText);
    };
 
-   m_PinYinCombobox.m_funcDeleteStringCheck = [](const CString &sText)->BOOL
+   m_pPinYinCombobox->m_funcDeleteStringCheck = [](const CString &sText)->BOOL
    {
       if(AfxMessageBox(_T("是否删除该选项"), MB_YESNO) == IDNO)
          return FALSE;
       return TRUE;
    };
 
-   m_PinYinCombobox.m_funcDeleteStringCheck = nullptr;
+   m_pPinYinCombobox->m_funcDeleteStringCheck = nullptr;
 
    m_nEditCount = 0;
-   m_PinYinCombobox.m_funcEditChange = [this](const CString &sText)
+   m_pPinYinCombobox->m_funcEditChange = [this](const CString &sText)
    {
       //this->MessageBox(sText);
       CString sOutput;
@@ -226,7 +235,7 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
    };
 
    m_nSelCount = 0;
-   m_PinYinCombobox.m_funcSelChange = [this](const CString &sText)
+   m_pPinYinCombobox->m_funcSelChange = [this](const CString &sText)
    {
       //this->MessageBox(sText);
       //TRACE(_T("edit SelChange %s\n"), sText);
@@ -248,23 +257,23 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
       ++m_nSelCount;
    };
 
-   //m_PinYinCombobox.SetMaxCount(5);
+   //m_pPinYinCombobox->SetMaxCount(5);
 
-   //m_PinYinCombobox.SetReadOnly(1);
+   //m_pPinYinCombobox->SetReadOnly(1);
 
    
 // 
-//    m_PinYinCombobox.SetWindowText(_T(""));
+//    m_pPinYinCombobox->SetWindowText(_T(""));
 // 
-//    ::SetWindowText(m_PinYinCombobox.GetSafeHwnd(), _T("我就是我"));
+//    ::SetWindowText(m_pPinYinCombobox->GetSafeHwnd(), _T("我就是我"));
 // 
 // 
-//    m_PinYinCombobox.SendMessage(WM_SETTEXT, 0, (LPARAM)_T("wweee22"));
+//    m_pPinYinCombobox->SendMessage(WM_SETTEXT, 0, (LPARAM)_T("wweee22"));
 // 
-//    //m_PinYinCombobox.SetReadOnly(0);
+//    //m_pPinYinCombobox->SetReadOnly(0);
 // 
-//    m_PinYinCombobox.SetSel(0, -1);
-//    m_PinYinCombobox.ReplaceSel(_T("1212"));
+//    m_pPinYinCombobox->SetSel(0, -1);
+//    m_pPinYinCombobox->ReplaceSel(_T("1212"));
 
    OnBnClickedButton5(); //初始化下拉框内容
 
@@ -408,7 +417,7 @@ void CTestChinesePinYinSearchDlg::OnBnClickedButton2()
 void CTestChinesePinYinSearchDlg::OnBnClickedBtnClear()
 {
    // TODO: 在此添加控件通知处理程序代码
-   m_PinYinCombobox.ResetContent();
+   m_pPinYinCombobox->ResetContent();
 }
 
 
@@ -418,7 +427,7 @@ void CTestChinesePinYinSearchDlg::OnBnClickedButton3()
    CString sText;
    m_edit3.GetWindowText(sText);
 
-   m_PinYinCombobox.SetWindowText(sText);
+   m_pPinYinCombobox->SetWindowText(sText);
 }
 
 
@@ -462,7 +471,7 @@ void CTestChinesePinYinSearchDlg::OnBnClickedBtnSeldlg()
 void CTestChinesePinYinSearchDlg::OnBnClickedButton4()
 {
    // TODO: 在此添加控件通知处理程序代码
-   int nCount = m_PinYinCombobox.GetCount();
+   int nCount = m_pPinYinCombobox->GetCount();
    CString sOut;
    sOut.Format(_T("%d"), nCount);
    MessageBox(sOut);
@@ -473,24 +482,24 @@ void CTestChinesePinYinSearchDlg::OnBnClickedButton5()
 {
    // TODO: 在此添加控件通知处理程序代码
 
-//    m_PinYinCombobox.AddString(_T("前片"));
-//    m_PinYinCombobox.AddString(_T("ABCDEFGHI00000000001"));
-//    m_PinYinCombobox.AddString(_T("00000000001"));
-//    m_PinYinCombobox.AddString(_T("00000000002"));
-//    m_PinYinCombobox.AddString(_T("请问我是谁"));
-//    m_PinYinCombobox.AddString(_T("我是谁"));
-//    m_PinYinCombobox.AddString(_T("我到底是谁"));
-//    m_PinYinCombobox.AddString(_T("请问你又是谁"));
-//    m_PinYinCombobox.AddString(_T("谁在问我我是谁"));
-//    m_PinYinCombobox.AddString(_T("我是谁这个问题我自己能回答"));
-//    m_PinYinCombobox.AddString(_T("我以前是谁"));
-//    m_PinYinCombobox.AddString(_T("我将来是谁"));
-//    m_PinYinCombobox.AddString(_T("请问我以前是谁"));
-//    m_PinYinCombobox.AddString(_T("请问我现在是谁"));
-//    m_PinYinCombobox.AddString(_T("我现在是谁"));
-//    m_PinYinCombobox.AddString(_T("00000000014"));
+//    m_pPinYinCombobox->AddString(_T("前片"));
+//    m_pPinYinCombobox->AddString(_T("ABCDEFGHI00000000001"));
+//    m_pPinYinCombobox->AddString(_T("00000000001"));
+//    m_pPinYinCombobox->AddString(_T("00000000002"));
+//    m_pPinYinCombobox->AddString(_T("请问我是谁"));
+//    m_pPinYinCombobox->AddString(_T("我是谁"));
+//    m_pPinYinCombobox->AddString(_T("我到底是谁"));
+//    m_pPinYinCombobox->AddString(_T("请问你又是谁"));
+//    m_pPinYinCombobox->AddString(_T("谁在问我我是谁"));
+//    m_pPinYinCombobox->AddString(_T("我是谁这个问题我自己能回答"));
+//    m_pPinYinCombobox->AddString(_T("我以前是谁"));
+//    m_pPinYinCombobox->AddString(_T("我将来是谁"));
+//    m_pPinYinCombobox->AddString(_T("请问我以前是谁"));
+//    m_pPinYinCombobox->AddString(_T("请问我现在是谁"));
+//    m_pPinYinCombobox->AddString(_T("我现在是谁"));
+//    m_pPinYinCombobox->AddString(_T("00000000014"));
 
-   m_PinYinCombobox.ResetContent();
+   m_pPinYinCombobox->ResetContent();
 
    CString sContents;
    m_editContents.GetWindowText(sContents);
@@ -503,7 +512,7 @@ void CTestChinesePinYinSearchDlg::OnBnClickedButton5()
       {
          sTemp.pop_back();
       }
-      m_PinYinCombobox.AddString(sTemp.c_str());
+      m_pPinYinCombobox->AddString(sTemp.c_str());
    }
 
 }
@@ -513,7 +522,7 @@ void CTestChinesePinYinSearchDlg::OnBnClickedButton6()
 {
    // TODO: 在此添加控件通知处理程序代码
    CString sOut;
-   m_PinYinCombobox.GetLBText(3, sOut);
+   m_pPinYinCombobox->GetLBText(3, sOut);
    MessageBox(sOut);
 }
 

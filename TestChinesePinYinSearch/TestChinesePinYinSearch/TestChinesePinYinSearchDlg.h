@@ -7,8 +7,9 @@
 #include "lycombox.h"
 #include "afxcmn.h"
 #include "LY2ComBox.h"
-#include "PinYinComboBox\PinYinComboBox.h"
+//#include "PinYinComboBox\PinYinComboBox.h"
 
+class CPinYinComboBox;
 
 // CTestChinesePinYinSearchDlg 对话框
 class CTestChinesePinYinSearchDlg : public CDialogEx
@@ -16,6 +17,7 @@ class CTestChinesePinYinSearchDlg : public CDialogEx
 // 构造
 public:
 	CTestChinesePinYinSearchDlg(CWnd* pParent = NULL);	// 标准构造函数
+	~CTestChinesePinYinSearchDlg();
 
 // 对话框数据
 	enum { IDD = IDD_TESTCHINESEPINYINSEARCH_DIALOG };
@@ -46,7 +48,7 @@ public:
    CComboBox m_cboBox2;
    CComboBoxEx m_cboExt;
    afx_msg void OnBnClickedButton2();
-   CPinYinComboBox m_PinYinCombobox;
+   CPinYinComboBox *m_pPinYinCombobox;
    afx_msg void OnBnClickedBtnClear();
    CEdit m_edit3;
    afx_msg void OnBnClickedButton3();
