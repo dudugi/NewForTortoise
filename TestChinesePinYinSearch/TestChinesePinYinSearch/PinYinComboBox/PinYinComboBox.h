@@ -1,3 +1,4 @@
+#pragma once
 #include <afxeditbrowsectrl.h>
 #include <vector>
 #include <memory>
@@ -6,6 +7,7 @@
 class CPinYinComboBoxDlg;
 class CPinYinComboBox:public CMFCEditBrowseCtrl
 {
+   DECLARE_DYNCREATE(CPinYinComboBox)
    DECLARE_MESSAGE_MAP()
 public:
    CPinYinComboBox();

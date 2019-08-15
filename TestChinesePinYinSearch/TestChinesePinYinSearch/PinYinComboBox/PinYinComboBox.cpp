@@ -13,6 +13,8 @@ CPinYinComboBox::CPinYinComboBox()
 {
 }
 
+IMPLEMENT_DYNCREATE(CPinYinComboBox, CMFCEditBrowseCtrl)
+
 void CPinYinComboBox::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
    CMFCEditBrowseCtrl::OnChar(nChar, nRepCnt, nFlags);
@@ -107,12 +109,13 @@ std::shared_ptr<CPinYinComboBoxDlg> CPinYinComboBox::GetDropdownDlg()
 
    m_spDropdownDlg.reset(new CPinYinComboBoxDlg);
    auto *pFont = GetFont();
-
-   LOGFONT LGFont;
-   memset(&LGFont, 0, sizeof(LGFont));
-   pFont->GetLogFont(&LGFont);
-
-   m_spDropdownDlg->SetEditFont(LGFont);
+   if (pFont)
+   {
+      LOGFONT LGFont;
+      memset(&LGFont, 0, sizeof(LGFont));
+      pFont->GetLogFont(&LGFont);
+      m_spDropdownDlg->SetEditFont(LGFont);
+   }
 
    m_spDropdownDlg->m_funcSelString = [this](const CString &sSelString)
    {
