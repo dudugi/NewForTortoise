@@ -5,6 +5,7 @@
 #include "TestSqlite.h"
 #include "CppSQLite3U.h"
 #include <vector>
+#include "GetNeedleModNames.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -44,6 +45,16 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 //          PathRemoveFileSpec(appPath);
 //          _tcscat(appPath,L"\\chat.db");
          //db.open(appPath);
+
+         {
+            std::vector<CString> vecNeedleNames;
+            if (!GetNeedleModNames(_T("D:\\svnD\\QL-Cloth6-20190216\\KDS\\制版模块\\用户文件\\制版\\用户配置\\UserModDb.db"),
+               &vecNeedleNames))
+            {
+               return 0;
+            }
+            return 0;
+         }
 
          CppSQLite3DB db;
          //db.open(appPath);
