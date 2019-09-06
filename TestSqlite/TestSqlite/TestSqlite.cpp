@@ -53,6 +53,13 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
             {
                return 0;
             }
+
+            for (auto Iter = vecNeedleNames.begin(); Iter != vecNeedleNames.end(); ++Iter)
+            {
+               std::wcout << (LPCTSTR)*Iter
+                  << std::endl;
+            }
+            system(("pause"));
             return 0;
          }
 
