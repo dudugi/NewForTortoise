@@ -17,27 +17,30 @@ BOOL GetNeedleModNames(LPCTSTR pszFilePath, std::vector<CString> *pvecNames)
    std::vector<CString> vecNames;
 
    CppSQLite3DB db;
+   CStringW sFilePath;
+   sFilePath = pszFilePath;
+   db.open(sFilePath);
 
-   db.open(pszFilePath);
-
-   CString Key=_T("Raynen_Soft");
+   CStringW Key = (L"Raynen_Soft");
 
    db.OpenKey(Key,Key.GetLength());
   
 
-   if(!db.tableExists(_T("ModData")))
+   if(!db.tableExists((L"ModData")))
    {
       return FALSE;
    }
 
-   CppSQLite3Query q = db.execQuery(_T("select name from ModData where isneedlemod = 1"));
+   CppSQLite3Query q = db.execQuery((L"select name from ModData where isneedlemod = 1"));
 
    while (!q.eof())
    {
-      LPCTSTR pszKey = q.fieldValue(_T("name"));
+      LPCWSTR pszKey = q.fieldValue((L"name"));
       if (pszKey)
       {
-         vecNames.push_back(pszKey);
+         CString sKey;
+         sKey = pszKey;
+         vecNames.push_back(sKey);
       }
 
       q.nextRow();

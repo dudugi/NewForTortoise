@@ -48,6 +48,9 @@
 #if !defined(AFX_CPPSQLITE3U_H__1B1BE273_2D1E_439C_946F_3CBD1C0EFD2F__INCLUDED_)
 #define AFX_CPPSQLITE3U_H__1B1BE273_2D1E_439C_946F_3CBD1C0EFD2F__INCLUDED_
 
+#define UNICODED
+#define _UNICODED
+
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
@@ -87,7 +90,7 @@
 static const bool DONT_DELETE_MSG=false;
 
 
-CString DoubleQuotes(CString in);
+CStringW DoubleQuotes(CStringW in);
 
 class CppSQLite3Query;
 class CppSQLite3Statement;
@@ -98,7 +101,7 @@ class CppSQLite3Exception
 public:
 
     CppSQLite3Exception(const int nErrCode,
-					    LPTSTR  szErrMess,
+					    LPWSTR  szErrMess,
 					    bool bDeleteMsg=true);
 
     CppSQLite3Exception(const CppSQLite3Exception&  e);
@@ -107,14 +110,14 @@ public:
 
     const int errorCode() { return mnErrCode; }
 
-    LPCTSTR errorMessage() { return mpszErrMess; }
+    LPCWSTR errorMessage() { return mpszErrMess; }
 
-    static LPCTSTR  errorCodeAsString(int nErrCode);
+    static LPCWSTR  errorCodeAsString(int nErrCode);
 
 private:
 
     int mnErrCode;
-    LPTSTR  mpszErrMess;
+    LPWSTR  mpszErrMess;
 };
 
 class ISqliteBottom;      //201107 chency
@@ -130,18 +133,18 @@ public:
 
     virtual ~CppSQLite3DB();
 
-    void open(LPCTSTR szFile);
+    void open(LPCWSTR szFile);
 
     void close();
-    bool tableExists(LPCTSTR szTable);
-    int execDML(LPCTSTR szSQL);
+    bool tableExists(LPCWSTR szTable);
+    int execDML(LPCWSTR szSQL);
 
-    CppSQLite3Query execQuery(LPCTSTR szSQL);
+    CppSQLite3Query execQuery(LPCWSTR szSQL);
 
-    int execScalar(LPCTSTR szSQL);
-	CString execScalarStr(LPCTSTR szSQL);
+    int execScalar(LPCWSTR szSQL);
+	CStringW execScalarStr(LPCWSTR szSQL);
 
-    CppSQLite3Statement compileStatement(LPCTSTR szSQL);
+    CppSQLite3Statement compileStatement(LPCWSTR szSQL);
 
     sqlite_int64 lastRowId();
 
@@ -154,7 +157,7 @@ public:
     //************************************
     // 函数名:  [execDML]
     // 返回值:  [int]   
-    // 参数:    [LPCTSTR szSQL]         sql语句是带？号的；
+    // 参数:    [LPCWSTR szSQL]         sql语句是带？号的；
     // 参数:    [const void * pdata]    要保存的数据首地址；
     // 参数:    [int nlen]              数据的长度
     // 函数描述:   用来插入blob类型的数据
@@ -162,20 +165,20 @@ public:
     // 修改时间:
     // 修改目的:
     //************************************
-    int execDML(LPCTSTR szSQL,const void *pdata,int nlen);
+    int execDML(LPCWSTR szSQL,const void *pdata,int nlen);
 
 
-    //int execDMLMultiBlob(LPCTSTR szSQL,ISqliteBottom::V_BLOB* &blobData,int count);  //  201107 chency
+    //int execDMLMultiBlob(LPCWSTR szSQL,ISqliteBottom::V_BLOB* &blobData,int count);  //  201107 chency
 
-    int SetKey(LPCTSTR szSQL,int Length);
-    int OpenKey(LPCTSTR szSQL,int Length);
+    int SetKey(LPCWSTR szSQL,int Length);
+    int OpenKey(LPCWSTR szSQL,int Length);
 
 private:
 
     CppSQLite3DB(const CppSQLite3DB& db);
     CppSQLite3DB& operator=(const CppSQLite3DB& db);
 
-    sqlite3_stmt* compile(LPCTSTR szSQL);
+    sqlite3_stmt* compile(LPCWSTR szSQL);
 
     void checkDB();
 public:
@@ -202,7 +205,7 @@ public:
 
 	CppSQLite3Query execQuery();
 
-	void bind(int nParam, LPCTSTR szValue);
+	void bind(int nParam, LPCWSTR szValue);
 	void bind(int nParam, const int nValue);
 	void bind(int nParam, const double dwValue);
 	void bind(int nParam, const unsigned char* blobValue, int nLen);
@@ -240,29 +243,29 @@ public:
 
 	int numFields();
 
-	int fieldIndex(LPCTSTR szField);
-	LPCTSTR fieldName(int nCol);
+	int fieldIndex(LPCWSTR szField);
+	LPCWSTR fieldName(int nCol);
 
-	LPCTSTR fieldDeclType(int nCol);
+	LPCWSTR fieldDeclType(int nCol);
 	int fieldDataType(int nCol);
 
-	LPCTSTR fieldValue(int nField);
-	LPCTSTR fieldValue(LPCTSTR szField);
+	LPCWSTR fieldValue(int nField);
+	LPCWSTR fieldValue(LPCWSTR szField);
 
 	int getIntField(int nField, int nNullValue=0);
-	int getIntField(LPCTSTR szField, int nNullValue=0);
+	int getIntField(LPCWSTR szField, int nNullValue=0);
 
 	double getFloatField(int nField, double fNullValue=0.0);
-	double getFloatField(LPCTSTR szField, double fNullValue=0.0);
+	double getFloatField(LPCWSTR szField, double fNullValue=0.0);
 
-	LPCTSTR getStringField(int nField, LPCTSTR szNullValue=_T(""));
-	LPCTSTR getStringField(LPCTSTR szField, LPCTSTR szNullValue=_T(""));
+	LPCWSTR getStringField(int nField, LPCWSTR szNullValue=(L""));
+	LPCWSTR getStringField(LPCWSTR szField, LPCWSTR szNullValue=(L""));
 
 	const void* getBlobField(int nField, int& nLen);
-	const void* getBlobField(LPCTSTR szField, int& nLen);
+	const void* getBlobField(LPCWSTR szField, int& nLen);
 
 	bool fieldIsNull(int nField);
-	bool fieldIsNull(LPCTSTR szField);
+	bool fieldIsNull(LPCWSTR szField);
 
 	bool eof();
 	void nextRow();
@@ -281,9 +284,9 @@ private:
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// TCHAR based sqlite3 function names for Unicode/MCBS builds.
+// WCHAR based sqlite3 function names for Unicode/MCBS builds.
 //
-#if defined(_UNICODE) || defined(UNICODE)
+#if defined(_UNICODED) || defined(UNICODED)
 #pragma message("Unicode Selected")
 #define _sqlite3_aggregate_context      sqlite3_aggregate_context
 #define _sqlite3_aggregate_count        sqlite3_aggregate_count

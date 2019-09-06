@@ -37,7 +37,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		{
 			// TODO: 在此处为应用程序的行为编写代码。
 
-         wcout.imbue(std::locale("chs"));
+         cout.imbue(std::locale("chs"));
 
 //          CppSQLite3DB db;
 //          TCHAR appPath[MAX_PATH+1];
@@ -56,13 +56,13 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
             for (auto Iter = vecNeedleNames.begin(); Iter != vecNeedleNames.end(); ++Iter)
             {
-               std::wcout << (LPCTSTR)*Iter
+               std::cout << (LPCTSTR)*Iter
                   << std::endl;
             }
             system(("pause"));
             return 0;
          }
-
+#ifdef UNICODE
          CppSQLite3DB db;
          //db.open(appPath);
          //db.open(_T("D:\\svnD\\PDM-source\\版房数据中心系统\\KDS-TaskTableBFThird\\Debug\\chat.db"));
@@ -140,7 +140,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
          int nTick3 = nTick2 + nTimes;
 
 
-         WCHAR szChinese[] = _T("\'hahahaha你们这群笨蛋ha2222\'");
+         TCHAR szChinese[] = _T("\'hahahaha你们这群笨蛋ha2222\'");
 
          CString sSql;
          sSql.Format(_T("insert or replace into Chat_MsgMgn (AutoID, cOrderNo, cSendUserID, dSendTime, cContent, cFile, iMsgType, iMsgState) \
@@ -169,7 +169,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
          catch(CppSQLite3Exception e)
          {
             TRACE( e.errorMessage() );
-            wprintf(_T("error: %s"), e.errorMessage());
+            _tprintf(_T("error: %s"), e.errorMessage());
 
             
 
@@ -180,7 +180,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
             return FALSE;
          }
 
-
+#endif
 
 //          int nRet = db.execDML(sSql);
 //          if (SQLITE_OK != nRet)
