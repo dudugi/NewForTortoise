@@ -31,6 +31,12 @@ BOOL GetNeedleModNames(LPCTSTR pszFilePath, std::vector<CString> *pvecNames)
       return FALSE;
    }
 
+   CppSQLite3Query q1 = db.execQuery((L"select * from sqlite_master  where type = 'table' and name = 'ModData' and sql like '%isneedlemod%'"));
+   if (q1.eof())
+   {
+      return FALSE;
+   }
+
    CppSQLite3Query q = db.execQuery((L"select name from ModData where isneedlemod = 1"));
 
    while (!q.eof())
