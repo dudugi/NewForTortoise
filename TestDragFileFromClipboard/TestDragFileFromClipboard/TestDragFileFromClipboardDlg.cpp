@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CTestDragFileFromClipboardDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
    ON_BN_CLICKED(IDC_BUTTON1, &CTestDragFileFromClipboardDlg::OnBnClickedButton1)
    ON_BN_CLICKED(IDC_BTN_TESTHASCLIPFILE, &CTestDragFileFromClipboardDlg::OnBnClickedBtnTesthasclipfile)
+   ON_WM_DROPFILES()
 END_MESSAGE_MAP()
 
 
@@ -88,6 +89,30 @@ HCURSOR CTestDragFileFromClipboardDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+BOOL CTestDragFileFromClipboardDlg::GetDropFilePaths(HDROP hDrop, std::list<CString> *pListPaths)
+{
+   if (!pListPaths)
+   {
+      return FALSE;
+   }
+   std::list<CString> ListPaths;
+   int cch;
+   int iFiles=DragQueryFile(hDrop,-1,NULL,0);
+   for (int i = 0; i < iFiles; i++)
+   {
+      cch = DragQueryFile(hDrop,i,NULL,0);
+      CString str;
+      DragQueryFile(hDrop,i,str.GetBuffer(cch + 1),cch+1);
+      str.ReleaseBuffer();
+      if (!::PathIsDirectory(str))
+      {
+         ListPaths.push_back(str);
+      }
+   }
+   pListPaths->swap(ListPaths);
+   return TRUE;
+}
+
 BOOL CTestDragFileFromClipboardDlg::GetClipFilePaths(std::list<CString> *pListPaths)
 {
    if (!OpenClipboard())//打开剪贴板  
@@ -100,7 +125,6 @@ BOOL CTestDragFileFromClipboardDlg::GetClipFilePaths(std::list<CString> *pListPa
    }
    std::list<CString> ListPaths;
    int cch;
-   LPTSTR lpszFile;
    //读取数据  
    HDROP hDrop=(HDROP)GetClipboardData(CF_HDROP);  
    int iFiles=DragQueryFile(hDrop,-1,NULL,0);
@@ -169,4 +193,23 @@ void CTestDragFileFromClipboardDlg::OnBnClickedBtnTesthasclipfile()
       return;
    }
    MessageBox(_T("Has"));
+}
+
+
+void CTestDragFileFromClipboardDlg::OnDropFiles(HDROP hDropInfo)
+{
+   // TODO: 在此添加消息处理程序代码和/或调用默认值
+   std::list<CString> lstPaths;
+   GetDropFilePaths(hDropInfo, &lstPaths);
+   CString strAll;
+   for (auto Iter = lstPaths.begin(); Iter != lstPaths.end(); ++Iter)
+   {
+      if (!strAll.IsEmpty())
+         strAll += _T("\n");
+      strAll += *Iter;
+   }
+
+   MessageBox(strAll);
+
+   CDialogEx::OnDropFiles(hDropInfo);
 }
