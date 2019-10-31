@@ -184,6 +184,32 @@ bool CompressImageQuality(
    return ( ( stat == Ok )?  true : false );
 }
 
+bool CompressImageToSize( const WCHAR* pszOriFilePath, const WCHAR* pszDestFilePath, ULONGLONG ullNeedSize, 
+   ULONGLONG *pullResultSize)
+{
+   for (int i = 100; i >= 0; --i)
+   {
+      bool bCompress = CompressImageQuality(pszOriFilePath, pszDestFilePath, i);
+      if (!bCompress)
+         break;
+
+      CFileStatus fileStatus;
+      if (CFile::GetStatus(pszDestFilePath, fileStatus))
+      {
+         if (fileStatus.m_size < ullNeedSize)
+         {
+            if (pullResultSize)
+            {
+               *pullResultSize = fileStatus.m_size;
+            }
+            return true;
+         }
+      }
+   }
+
+   return false;
+}
+
 void CCreateThumbFileDlg::OnBnClickedButton1()
 {
    // TODO: 在此添加控件通知处理程序代码
@@ -194,28 +220,14 @@ void CCreateThumbFileDlg::OnBnClickedButton1()
    //We will let this value vary from 0 to 100.
    CString sText;
    m_editTargetSize.GetWindowText(sText);
-   int n = wcstol(sText, NULL, 10);
-   n *= 1024;
+   ULONGLONG ullNeedSize = wcstol(sText, NULL, 10);
+   ullNeedSize *= 1024;
 
-   int nRet  =  0;
-   for (int i = 100; i >= 0; --i)
-   {
-      bool bCompress = CompressImageQuality(psz, pszDst, i);
-      if (!bCompress)
-         break;
+   ULONGLONG ullResultSize  =  0;
+   CompressImageToSize(psz, pszDst, ullNeedSize, &ullResultSize);
 
-      CFileStatus fileStatus;
-      if (CFile::GetStatus(pszDst, fileStatus))
-      {
-         if (fileStatus.m_size < n)
-         {
-            nRet = fileStatus.m_size;
-            break;
-         }
-      }
-   }
    CString sSize;
-   sSize.Format(_T("%d"), nRet);
+   sSize.Format(_T("%d"), ullResultSize);
    m_StaticSize.SetWindowText(sSize);
 
    
