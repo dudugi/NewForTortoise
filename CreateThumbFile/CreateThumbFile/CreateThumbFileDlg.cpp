@@ -121,21 +121,85 @@ int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
    return -1;
 }
 
+bool CompressImageQuality( 
+   const WCHAR* pszOriFilePath, 
+   const WCHAR* pszDestFilePah,
+   ULONG quality )
+{
+   // copy from http://msdn.microsoft.com/en-us/library/ms533844(v=VS.85).aspx
+   // Initialize GDI+.
+   GdiplusStartupInput gdiplusStartupInput;
+   ULONG_PTR gdiplusToken;
+   Status stat = GenericError;
+   stat = GdiplusStartup( &gdiplusToken, &gdiplusStartupInput, NULL );
+   if ( Ok != stat ) {
+      return false;
+   }
+
+   // 重置状态
+   stat = GenericError;
+
+   // Get an image from the disk.
+   Image* pImage = Image::FromFile(pszOriFilePath);//new Image(pszOriFilePath);
+
+   do {
+      if ( NULL == pImage ) {
+         break;
+      }
+
+      // 获取长宽
+      UINT ulHeight = pImage->GetHeight();
+      UINT ulWidth = pImage->GetWidth();
+      if ( ulWidth < 1 || ulHeight < 1 ) {
+         break;
+      }
+
+      // Get the CLSID of the JPEG encoder.
+      CLSID encoderClsid;
+      if ( !GetEncoderClsid(L"image/jpeg", &encoderClsid) ) {
+         break;
+      }
+
+      // The one EncoderParameter object has an array of values.
+      // In this case, there is only one value (of type ULONG)
+      // in the array. We will let this value vary from 0 to 100.
+      EncoderParameters encoderParameters;
+      encoderParameters.Count = 1;
+      encoderParameters.Parameter[0].Guid = EncoderQuality;
+      encoderParameters.Parameter[0].Type = EncoderParameterValueTypeLong;
+      encoderParameters.Parameter[0].NumberOfValues = 1;
+      encoderParameters.Parameter[0].Value = &quality;
+      stat = pImage->Save(pszDestFilePah, &encoderClsid, &encoderParameters);
+   } while(0);
+
+   //if ( pImage ) {
+   //   delete pImage;
+   //   pImage = NULL;
+   //}
+
+   GdiplusShutdown(gdiplusToken);
+
+   return ( ( stat == Ok )?  true : false );
+}
 
 void CCreateThumbFileDlg::OnBnClickedButton1()
 {
    // TODO: 在此添加控件通知处理程序代码
    auto psz = _T("I:\\图片\\参考图片\\女款平收肩圆领套绞花.png");
-   Gdiplus::Image *pImg = Gdiplus::Image::FromFile(psz);
+   
 
-   auto pszDst = _T("I:\\图片\\参考图片\\女款平收肩圆领套绞花2.jpg");
+   auto pszDst = _T("I:\\图片\\参考图片\\女款平收肩圆领套绞花4-24.jpg");
 
-   CLSID encoderClsid;
-   //Gdiplus::Bitmap bmp(m_hBitmap,NULL);
-   //GetEncoderClsid(L"image/jpeg",&encoderClsid);//确定编码格式是格式：jpeg
+   CompressImageQuality(psz, pszDst, 24);
 
-   int nResult = GetEncoderClsid(L"image/jpeg", &encoderClsid);
+   
+   //Gdiplus::Image *pImg = Gdiplus::Image::FromFile(psz);
+   //CLSID encoderClsid;
+   ////Gdiplus::Bitmap bmp(m_hBitmap,NULL);
+   ////GetEncoderClsid(L"image/jpeg",&encoderClsid);//确定编码格式是格式：jpeg
 
    //int nResult = GetEncoderClsid(L"image/jpeg", &encoderClsid);
-   pImg->Save(pszDst, &encoderClsid);
+
+   ////int nResult = GetEncoderClsid(L"image/jpeg", &encoderClsid);
+   //pImg->Save(pszDst, &encoderClsid);
 }
