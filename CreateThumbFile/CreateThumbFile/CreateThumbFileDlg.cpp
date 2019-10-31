@@ -123,23 +123,21 @@ int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
    return -1;
 }
 
-bool CompressImageQuality( 
+bool CompressImageToJpgByQuality( 
    const WCHAR* pszOriFilePath, 
    const WCHAR* pszDestFilePah,
    ULONG quality )
 {
-   // copy from http://msdn.microsoft.com/en-us/library/ms533844(v=VS.85).aspx
-   // Initialize GDI+.
-   GdiplusStartupInput gdiplusStartupInput;
-   ULONG_PTR gdiplusToken;
-   Status stat = GenericError;
-   stat = GdiplusStartup( &gdiplusToken, &gdiplusStartupInput, NULL );
-   if ( Ok != stat ) {
-      return false;
-   }
+   //GdiplusStartupInput gdiplusStartupInput;
+   //ULONG_PTR gdiplusToken;
+   //Status stat = GenericError;
+   //stat = GdiplusStartup( &gdiplusToken, &gdiplusStartupInput, NULL );
+   //if ( Ok != stat ) {
+   //   return false;
+   //}
 
    // ÷ÿ÷√◊¥Ã¨
-   stat = GenericError;
+   Status stat = GenericError;
 
    // Get an image from the disk.
    Image* pImage = Image::FromFile(pszOriFilePath);//new Image(pszOriFilePath);
@@ -179,12 +177,12 @@ bool CompressImageQuality(
    //   pImage = NULL;
    //}
 
-   GdiplusShutdown(gdiplusToken);
+   //GdiplusShutdown(gdiplusToken);
 
    return ( ( stat == Ok )?  true : false );
 }
 
-bool CompressImageToSize(const WCHAR *pszOriFilePath, const WCHAR *pszDestFilePath, ULONGLONG ullNeedSize, 
+bool CompressImageToJpgBySize(const WCHAR *pszOriFilePath, const WCHAR *pszDestFilePath, ULONGLONG ullNeedSize, 
    ULONGLONG *pullResultSize)
 {
    int nMax = 100;
@@ -195,7 +193,7 @@ bool CompressImageToSize(const WCHAR *pszOriFilePath, const WCHAR *pszDestFilePa
    {
       nMid = (nMax + nMin) / 2;
 
-      bool bCompress = CompressImageQuality(pszOriFilePath, pszDestFilePath, nMid);
+      bool bCompress = CompressImageToJpgByQuality(pszOriFilePath, pszDestFilePath, nMid);
       if (bCompress)
       {
          CFileStatus fileStatus;
@@ -276,7 +274,7 @@ void CCreateThumbFileDlg::OnBnClickedButton1()
    ullNeedSize *= 1024;
 
    ULONGLONG ullResultSize  =  0;
-   CompressImageToSize(psz, pszDst, ullNeedSize, &ullResultSize);
+   CompressImageToJpgBySize(psz, pszDst, ullNeedSize, &ullResultSize);
 
    CString sSize;
    sSize.Format(_T("%d"), ullResultSize);
