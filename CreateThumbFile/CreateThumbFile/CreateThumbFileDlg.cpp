@@ -28,7 +28,9 @@ CCreateThumbFileDlg::CCreateThumbFileDlg(CWnd* pParent /*=NULL*/)
 
 void CCreateThumbFileDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+   CDialogEx::DoDataExchange(pDX);
+   DDX_Control(pDX, IDC_EDIT_TARGET_SIZE, m_editTargetSize);
+   DDX_Control(pDX, IDC_STATIC_SIZE, m_StaticSize);
 }
 
 BEGIN_MESSAGE_MAP(CCreateThumbFileDlg, CDialogEx)
@@ -185,12 +187,36 @@ bool CompressImageQuality(
 void CCreateThumbFileDlg::OnBnClickedButton1()
 {
    // TODO: 在此添加控件通知处理程序代码
-   auto psz = _T("I:\\图片\\参考图片\\女款平收肩圆领套绞花.png");
-   
+   auto psz = _T("E:\\myProject2\\NewForTortoise\\CreateThumbFile\\Debug\\女款平收肩圆领套绞花.bmp");
 
-   auto pszDst = _T("I:\\图片\\参考图片\\女款平收肩圆领套绞花4-24.jpg");
+   auto pszDst = _T("E:\\myProject2\\NewForTortoise\\CreateThumbFile\\Debug\\女款平收肩圆领套绞花4-26.jpg");
 
-   CompressImageQuality(psz, pszDst, 24);
+   //We will let this value vary from 0 to 100.
+   CString sText;
+   m_editTargetSize.GetWindowText(sText);
+   int n = wcstol(sText, NULL, 10);
+   n *= 1024;
+
+   int nRet  =  0;
+   for (int i = 100; i >= 0; --i)
+   {
+      bool bCompress = CompressImageQuality(psz, pszDst, i);
+      if (!bCompress)
+         break;
+
+      CFileStatus fileStatus;
+      if (CFile::GetStatus(pszDst, fileStatus))
+      {
+         if (fileStatus.m_size < n)
+         {
+            nRet = fileStatus.m_size;
+            break;
+         }
+      }
+   }
+   CString sSize;
+   sSize.Format(_T("%d"), nRet);
+   m_StaticSize.SetWindowText(sSize);
 
    
    //Gdiplus::Image *pImg = Gdiplus::Image::FromFile(psz);

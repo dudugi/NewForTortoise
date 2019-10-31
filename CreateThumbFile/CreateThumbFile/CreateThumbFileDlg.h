@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxwin.h"
 
 
 // CCreateThumbFileDlg ¶Ô»°¿ò
@@ -30,4 +31,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
    afx_msg void OnBnClickedButton1();
+   CEdit m_editTargetSize;
+   CStatic m_StaticSize;
 };
