@@ -184,28 +184,80 @@ bool CompressImageQuality(
    return ( ( stat == Ok )?  true : false );
 }
 
-bool CompressImageToSize( const WCHAR* pszOriFilePath, const WCHAR* pszDestFilePath, ULONGLONG ullNeedSize, 
+bool CompressImageToSize(const WCHAR *pszOriFilePath, const WCHAR *pszDestFilePath, ULONGLONG ullNeedSize, 
    ULONGLONG *pullResultSize)
 {
-   for (int i = 100; i >= 0; --i)
-   {
-      bool bCompress = CompressImageQuality(pszOriFilePath, pszDestFilePath, i);
-      if (!bCompress)
-         break;
+   int nMax = 100;
+   int nMin = 0;
 
-      CFileStatus fileStatus;
-      if (CFile::GetStatus(pszDestFilePath, fileStatus))
+   int nMid = 0;
+   while (1)
+   {
+      nMid = (nMax + nMin) / 2;
+
+      bool bCompress = CompressImageQuality(pszOriFilePath, pszDestFilePath, nMid);
+      if (bCompress)
       {
-         if (fileStatus.m_size < ullNeedSize)
+         CFileStatus fileStatus;
+         if (CFile::GetStatus(pszDestFilePath, fileStatus))
          {
-            if (pullResultSize)
+            if (fileStatus.m_size < ullNeedSize)
             {
-               *pullResultSize = fileStatus.m_size;
+               nMin = nMid + 1;
+               if (nMin >= nMax)
+               {
+                  if (pullResultSize)
+                  {
+                     *pullResultSize = fileStatus.m_size;
+                  }
+                  return true;
+               }
             }
-            return true;
+            else if (fileStatus.m_size > ullNeedSize)
+            {
+               nMax = nMid - 1;
+               if (nMin >= nMax)
+               {
+                  if (pullResultSize)
+                  {
+                     *pullResultSize = fileStatus.m_size;
+                  }
+                  return true;
+               }
+            }
+            else
+            {
+               if (pullResultSize)
+               {
+                  *pullResultSize = fileStatus.m_size;
+               }
+               return true;
+            }
          }
       }
    }
+   
+
+
+   //for (int i = 100; i >= 0; --i)
+   //{
+   //   bool bCompress = CompressImageQuality(pszOriFilePath, pszDestFilePath, i);
+   //   if (!bCompress)
+   //      break;
+
+   //   CFileStatus fileStatus;
+   //   if (CFile::GetStatus(pszDestFilePath, fileStatus))
+   //   {
+   //      if (fileStatus.m_size < ullNeedSize)
+   //      {
+   //         if (pullResultSize)
+   //         {
+   //            *pullResultSize = fileStatus.m_size;
+   //         }
+   //         return true;
+   //      }
+   //   }
+   //}
 
    return false;
 }
