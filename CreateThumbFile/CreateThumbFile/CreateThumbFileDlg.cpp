@@ -182,9 +182,120 @@ bool CompressImageToJpgByQuality(
    return ( ( stat == Ok )?  true : false );
 }
 
+bool CompressImagePixel( 
+   const WCHAR* pszOriFilePath, 
+   const WCHAR* pszDestFilePah, 
+   int nMaxSize)
+{
+   // Initialize GDI+.
+   UINT ulNewHeigth = 0;
+   UINT ulNewWidth = 0;
+
+   Status stat = GenericError;
+
+   // Get an image from the disk.
+   Image* pImage = Image::FromFile(pszOriFilePath);
+
+   do {
+      if ( NULL == pImage ) {
+         break;
+      }
+
+      // 获取长宽
+      UINT unOriHeight = pImage->GetHeight();
+      UINT unOriWidth = pImage->GetWidth();
+
+      double ratio = max(unOriHeight/double(nMaxSize),unOriWidth/double(nMaxSize));
+
+      if(ratio<=1)
+      {
+         break;
+      }
+         ulNewHeigth = int(unOriHeight/ratio);
+         ulNewWidth = int(unOriWidth/ratio);
+
+      do {
+         CLSID encoderClsid;
+         if ( unOriWidth < 1 || unOriHeight < 1 ) {
+            break;
+         }
+
+         // Get the CLSID of the JPEG encoder.
+         if ( !GetEncoderClsid(L"image/jpeg", &encoderClsid) ) {
+            break;
+         }
+
+         REAL fSrcX = 0.0f;
+         REAL fSrcY = 0.0f;
+         REAL fSrcWidth = (REAL) unOriWidth;
+         REAL fSrcHeight = (REAL) unOriHeight ;
+         RectF RectDest( 0.0f, 0.0f, (REAL)ulNewWidth, (REAL)ulNewHeigth);
+
+
+         Bitmap TempBitmap( ulNewWidth, ulNewHeigth );
+         Graphics* graphics = NULL;
+
+         do {
+
+            graphics = Graphics::FromImage( &TempBitmap );
+            if ( !graphics ) {
+               break;
+            }
+
+            stat = graphics->SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
+            if ( Ok != stat ) {
+               break;
+            }
+
+            stat = graphics->SetSmoothingMode(Gdiplus::SmoothingModeHighQuality);
+            if ( Ok != stat ) {
+               break;
+            }
+
+            stat = graphics->DrawImage( pImage, RectDest, fSrcX, fSrcY, fSrcWidth, fSrcHeight,
+               UnitPixel, NULL, NULL, NULL);
+            if ( Ok != stat ) {
+               break;
+            }
+
+            stat = TempBitmap.Save( pszDestFilePah, &encoderClsid, NULL );
+            if ( Ok != stat ) {
+               break;
+            }
+
+         } while(0);
+
+         if ( NULL != graphics ) {
+            delete graphics;
+            graphics = NULL;
+         }
+      } while(0);
+   } while (0);
+
+   //if ( pImage ) {
+   //   delete pImage;
+   //   pImage = NULL;
+   //}
+
+   return ( ( Ok == stat ) ? true : false );
+}
+
 bool CompressImageToJpgBySize(const WCHAR *pszOriFilePath, const WCHAR *pszDestFilePath, ULONGLONG ullNeedSize, 
    ULONGLONG *pullResultSize)
 {
+   CFileStatus fileStatus;
+   if (!CFile::GetStatus(pszOriFilePath, fileStatus))
+      return false;
+
+   if (fileStatus.m_size < ullNeedSize)
+   {
+      CopyFile(pszOriFilePath, pszDestFilePath, FALSE);
+      if (pullResultSize)
+      {
+         *pullResultSize = fileStatus.m_size;
+      }
+      return false;
+   }
    int nMax = 100;
    int nMin = 0;
 
@@ -197,7 +308,6 @@ bool CompressImageToJpgBySize(const WCHAR *pszOriFilePath, const WCHAR *pszDestF
       if (!bCompress)
          return false;
 
-      CFileStatus fileStatus;
       if (!CFile::GetStatus(pszDestFilePath, fileStatus))
          return false;
 
@@ -269,7 +379,11 @@ void CCreateThumbFileDlg::OnBnClickedButton1()
    ullNeedSize *= 1024;
 
    ULONGLONG ullResultSize  =  0;
-   CompressImageToJpgBySize(psz, pszDst, ullNeedSize, &ullResultSize);
+
+   auto pszDst2 = _T("E:\\myProject2\\NewForTortoise\\CreateThumbFile\\Debug\\女款平收肩圆领套绞花4-26000.jpg");
+   CompressImagePixel(psz, pszDst2, 300);
+
+   CompressImageToJpgBySize(pszDst2, pszDst, ullNeedSize, &ullResultSize);
 
    CString sSize;
    sSize.Format(_T("%d"), ullResultSize);
