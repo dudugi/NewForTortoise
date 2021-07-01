@@ -33,7 +33,4 @@ protected:
 public:
    afx_msg void OnBnClickedButton1();
    afx_msg void OnBnClickedBtnTesthasclipfile();
-   afx_msg void OnDropFiles(HDROP hDropInfo);
-
-   BOOL GetDropFilePaths(HDROP hDropInfo, std::list<CString> *pListPaths);
 };

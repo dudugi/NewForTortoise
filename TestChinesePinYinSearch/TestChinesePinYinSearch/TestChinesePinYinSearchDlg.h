@@ -7,6 +7,7 @@
 #include "lycombox.h"
 #include "afxcmn.h"
 #include "LY2ComBox.h"
+#include <MutiSelComboBox\MutiSelComboBoxBCGDlg.h>
 //#include "PinYinComboBox\PinYinComboBox.h"
 
 class CPinYinComboBox;
@@ -48,7 +49,8 @@ public:
    CComboBox m_cboBox2;
    CComboBoxEx m_cboExt;
    afx_msg void OnBnClickedButton2();
-   CPinYinComboBox *m_pPinYinCombobox;
+   CMutiSelComboBoxBCGDlg *m_pPinYinCombobox;
+   //CPinYinComboBox *m_pPinYinCombobox;
    afx_msg void OnBnClickedBtnClear();
    CEdit m_edit3;
    afx_msg void OnBnClickedButton3();

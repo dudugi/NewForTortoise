@@ -111,6 +111,8 @@
     <ClInclude Include="CommonChatContent\QLChatString.h" />
     <ClInclude Include="LY2ComBox.h" />
     <ClInclude Include="LYComBox.h" />
+    <ClInclude Include="MutiSelComboBox\MutiSelComboBoxBCGDlg.h" />
+    <ClInclude Include="MutiSelComboBox\MutiSelComboBoxListBCG.h" />
     <ClInclude Include="PinYinComboBox\PinYinComboBox.h" />
     <ClInclude Include="PinYinComboBox\PinYinComboBoxDlg.h" />
     <ClInclude Include="PinYinComboBox\PinYinComboBoxList.h" />
@@ -130,6 +132,8 @@
     <ClCompile Include="CommonChatContent\QLChatString.cpp" />
     <ClCompile Include="LY2ComBox.cpp" />
     <ClCompile Include="LYComBox.cpp" />
+    <ClCompile Include="MutiSelComboBox\MutiSelComboBoxBCGDlg.cpp" />
+    <ClCompile Include="MutiSelComboBox\MutiSelComboBoxListBCG.cpp" />
     <ClCompile Include="PinYinComboBox\PinYinComboBox.cpp" />
     <ClCompile Include="PinYinComboBox\PinYinComboBoxDlg.cpp" />
     <ClCompile Include="PinYinComboBox\PinYinComboBoxList.cpp" />

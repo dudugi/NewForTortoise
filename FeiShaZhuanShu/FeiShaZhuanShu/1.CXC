@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ShapeDesign>
+    <BodyType />
+    <NeckSet NeckSplit="5" isBottmsprate="1" isNeckSplit="1" isVneckYTX="0" Enecktype="-858993460" m_bTiHuaShouZhen="0" />
+    <NeedleLessType />
+    <OtherSet CottonRowNum="8" AddType="1" iFeiShaOneYarn="1" abandon_rowcount="1" m_iLiuBianZS="-858993460" m_bSingleSplitYarnNeck="0" KaisFlatNeedleType="-858993460" NeckFlatNeedleType="-858993460" />
+    <BottomSet Luobu="-858993460" TRansType="" />
+    <ParamSet m_IsBoarOneYarn="1" bSetSecYarnLeft="0" bSetWasteSecYarnLeft="1" m_NeckIsOneYarn="-858993460" />
+    <BoardSet x_Border_up="777" x_Border_down="0" y_Border="0" m_nYNeckBottomBorder="0" />
+</ShapeDesign>

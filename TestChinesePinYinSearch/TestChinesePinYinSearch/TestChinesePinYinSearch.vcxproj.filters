@@ -28,6 +28,9 @@
     <Filter Include="PinYinComboBox">
       <UniqueIdentifier>{6fadce7b-46e1-43e6-b371-67609a288a2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MultiSelComboBox">
+      <UniqueIdentifier>{9eae34ef-89de-4d12-a33d-367ea7c56283}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -99,6 +102,12 @@
     <ClInclude Include="PinYinComboBox\PinYinComboBoxDlg.h">
       <Filter>PinYinComboBox</Filter>
     </ClInclude>
+    <ClInclude Include="MutiSelComboBox\MutiSelComboBoxBCGDlg.h">
+      <Filter>MultiSelComboBox</Filter>
+    </ClInclude>
+    <ClInclude Include="MutiSelComboBox\MutiSelComboBoxListBCG.h">
+      <Filter>MultiSelComboBox</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestChinesePinYinSearch.cpp">
@@ -151,6 +160,12 @@
     </ClCompile>
     <ClCompile Include="PinYinComboBox\PinYinComboBoxDlg.cpp">
       <Filter>PinYinComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="MutiSelComboBox\MutiSelComboBoxBCGDlg.cpp">
+      <Filter>MultiSelComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="MutiSelComboBox\MutiSelComboBoxListBCG.cpp">
+      <Filter>MultiSelComboBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

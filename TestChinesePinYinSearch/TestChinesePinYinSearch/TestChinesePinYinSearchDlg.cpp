@@ -11,6 +11,7 @@
 #include <string>
 #include <sstream> 
 #include "PinYinComboBox\PinYinComboBox.h"
+#include <MutiSelComboBox\MutiSelComboBoxBCGDlg.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -51,6 +52,8 @@ END_MESSAGE_MAP()
 
 // CTestChinesePinYinSearchDlg 对话框
 
+
+
 void CTestChinesePinYinSearchDlg::OnBnClickedBtnDelusertext()
 {
    CString str;
@@ -86,10 +89,10 @@ void CTestChinesePinYinSearchDlg::DoDataExchange(CDataExchange* pDX)
    DDX_Control(pDX, IDC_COMBO1, m_cbo1);
    DDX_Control(pDX, IDC_COMBO2, m_cboBox2);
    DDX_Control(pDX, IDC_COMBOBOXEX1, m_cboExt);
-   DDX_Control(pDX, IDC_MFCEDITBROWSE_NAME, *m_pPinYinCombobox);
+   //DDX_Control(pDX, IDC_MFCEDITBROWSE_NAME, *m_pPinYinCombobox);
    DDX_Control(pDX, IDC_EDIT_3, m_edit3);
 
-   DDX_Text(pDX, IDC_MFCEDITBROWSE_NAME, m_sTextPinYin);
+   //DDX_Text(pDX, IDC_MFCEDITBROWSE_NAME, m_sTextPinYin);
    DDX_CBString(pDX, IDC_COMBO2, m_sCBOBox2);
 
    DDX_Control(pDX, IDC_EDIT_CONTENT, m_editContents);
@@ -123,7 +126,8 @@ END_MESSAGE_MAP()
 
 BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 {
-	m_pPinYinCombobox = (CPinYinComboBox*)RUNTIME_CLASS(CPinYinComboBox)->CreateObject();
+	m_pPinYinCombobox = (CMutiSelComboBoxBCGDlg*)RUNTIME_CLASS(CMutiSelComboBoxBCGDlg)->CreateObject();
+   //m_pPinYinCombobox = (CPinYinComboBox*)RUNTIME_CLASS(CPinYinComboBox)->CreateObject();
 	
 	CDialogEx::OnInitDialog();
 
@@ -194,9 +198,32 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
    //m_cboExt.AddString()
 
   // m_pPinYinCombobox->EnableBrowseButton(TRUE, _T("▼"));
-   m_pPinYinCombobox->Init();
+   //int Init(const CRect &Rect, const CString &sEditText, int nEditSelStart, 
+      //int nEditSelEnd, BOOL bInitialFilter, BOOL bShowBrowserButton);
 
-   //m_MFCEditBrowseCtrlName.AddStringNew()
+   CRect cRect(10,100,10,100);
+   GetDlgItem(IDC_MFCEDITBROWSE_NAME)->GetWindowRect(&cRect);
+
+   POINT pt;
+   pt.x = 0;
+   pt.y = 50;
+   cRect.MoveToXY(pt);
+
+
+
+   //m_pPinYinCombobox->GetWindowRect(&cRect);
+
+
+   DWORD nStyle = 0;//GetStyle();
+   //m_pPinYinCombobox->CloseWindow();
+   m_pPinYinCombobox->CreateDlgIndirect(this, nStyle, cRect.Height(), TRUE);
+   m_pPinYinCombobox->SetAutoHide(FALSE);
+
+   m_pPinYinCombobox->Init(cRect, _T("123"), 0, 2, TRUE, TRUE);
+   //m_pPinYinCombobox->Init();
+
+
+   m_pPinYinCombobox->ShowWindow(SW_SHOW);
 
 
    m_pPinYinCombobox->m_funcDeleteString = [this](const CString &sText)
@@ -213,67 +240,51 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 
    m_pPinYinCombobox->m_funcDeleteStringCheck = nullptr;
 
-   m_nEditCount = 0;
-   m_pPinYinCombobox->m_funcEditChange = [this](const CString &sText)
-   {
-      //this->MessageBox(sText);
-      CString sOutput;
-      sOutput.Format(_T("edit change %s, %d"), sText, m_nEditCount);
+   //m_nEditCount = 0;
+   //m_pPinYinCombobox->m_funcEditChange = [this](const CString &sText)
+   //{
+   //   //this->MessageBox(sText);
+   //   CString sOutput;
+   //   sOutput.Format(_T("edit change %s, %d"), sText, m_nEditCount);
 
-      CClientDC dc(this);
-      dc.TextOut(10, 10, _T("                                                                                               "));
-      dc.TextOut(10, 10, sOutput);
+   //   CClientDC dc(this);
+   //   dc.TextOut(10, 10, _T("                                                                                               "));
+   //   dc.TextOut(10, 10, sOutput);
 
-      CString sText2;
-      this->GetDlgItemText(IDC_MFCEDITBROWSE_NAME, sText2);
-      sOutput.Format(_T("edit change %s, %d"), sText2, m_nEditCount);
+   //   CString sText2;
+   //   this->GetDlgItemText(IDC_MFCEDITBROWSE_NAME, sText2);
+   //   sOutput.Format(_T("edit change %s, %d"), sText2, m_nEditCount);
 
-      dc.TextOut(10, 30, _T("                                                                                               "));
-      dc.TextOut(10, 30, sOutput);
+   //   dc.TextOut(10, 30, _T("                                                                                               "));
+   //   dc.TextOut(10, 30, sOutput);
 
-      ++m_nEditCount;
-   };
+   //   ++m_nEditCount;
+   //};
 
-   m_nSelCount = 0;
-   m_pPinYinCombobox->m_funcSelChange = [this](const CString &sText)
-   {
-      //this->MessageBox(sText);
-      //TRACE(_T("edit SelChange %s\n"), sText);
+   //m_nSelCount = 0;
+   //m_pPinYinCombobox->m_funcSelChange = [this](const CString &sText)
+   //{
+   //   //this->MessageBox(sText);
+   //   //TRACE(_T("edit SelChange %s\n"), sText);
 
-      CString sOutput;
-      sOutput.Format(_T("edit SelChange %s, %d"), sText, m_nSelCount);
+   //   CString sOutput;
+   //   sOutput.Format(_T("edit SelChange %s, %d"), sText, m_nSelCount);
 
-      CClientDC dc(this);
-      dc.TextOut(10, 50, _T("                                                                                               "));
-      dc.TextOut(10, 50, sOutput);
+   //   CClientDC dc(this);
+   //   dc.TextOut(10, 50, _T("                                                                                               "));
+   //   dc.TextOut(10, 50, sOutput);
 
-      CString sText2;
-      this->GetDlgItemText(IDC_MFCEDITBROWSE_NAME, sText2);
-      sOutput.Format(_T("edit SelChange %s, %d"), sText2, m_nSelCount);
+   //   CString sText2;
+   //   this->GetDlgItemText(IDC_MFCEDITBROWSE_NAME, sText2);
+   //   sOutput.Format(_T("edit SelChange %s, %d"), sText2, m_nSelCount);
 
-      dc.TextOut(10, 90, _T("                                                                                               "));
-      dc.TextOut(10, 90, sOutput);
+   //   dc.TextOut(10, 90, _T("                                                                                               "));
+   //   dc.TextOut(10, 90, sOutput);
 
-      ++m_nSelCount;
-   };
-
-   //m_pPinYinCombobox->SetMaxCount(5);
-
-   //m_pPinYinCombobox->SetReadOnly(1);
+   //   ++m_nSelCount;
+   //};
 
    
-// 
-//    m_pPinYinCombobox->SetWindowText(_T(""));
-// 
-//    ::SetWindowText(m_pPinYinCombobox->GetSafeHwnd(), _T("我就是我"));
-// 
-// 
-//    m_pPinYinCombobox->SendMessage(WM_SETTEXT, 0, (LPARAM)_T("wweee22"));
-// 
-//    //m_pPinYinCombobox->SetReadOnly(0);
-// 
-//    m_pPinYinCombobox->SetSel(0, -1);
-//    m_pPinYinCombobox->ReplaceSel(_T("1212"));
 
    OnBnClickedButton5(); //初始化下拉框内容
 
