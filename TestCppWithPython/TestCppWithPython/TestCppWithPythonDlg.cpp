@@ -7,6 +7,10 @@
 #include "TestCppWithPythonDlg.h"
 #include "afxdialogex.h"
 
+#include "C:\Users\duchen\AppData\Local\Programs\Python\Python37\include\Python.h"
+
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -44,6 +48,8 @@ BOOL CTestCppWithPythonDlg::OnInitDialog()
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
+
+   
 
 	// TODO: 在此添加额外的初始化代码
 
