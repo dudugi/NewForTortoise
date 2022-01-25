@@ -126,8 +126,8 @@ END_MESSAGE_MAP()
 
 BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 {
-	m_pPinYinCombobox = (CMutiSelComboBoxBCGDlg*)RUNTIME_CLASS(CMutiSelComboBoxBCGDlg)->CreateObject();
-   //m_pPinYinCombobox = (CPinYinComboBox*)RUNTIME_CLASS(CPinYinComboBox)->CreateObject();
+	//m_pPinYinCombobox = (CMutiSelComboBoxBCGDlg*)RUNTIME_CLASS(CMutiSelComboBoxBCGDlg)->CreateObject();
+   m_pPinYinCombobox = (CPinYinComboBox*)RUNTIME_CLASS(CPinYinComboBox)->CreateObject();
 	
 	CDialogEx::OnInitDialog();
 
@@ -215,12 +215,15 @@ BOOL CTestChinesePinYinSearchDlg::OnInitDialog()
 
 
    DWORD nStyle = 0;//GetStyle();
-   //m_pPinYinCombobox->CloseWindow();
-   m_pPinYinCombobox->CreateDlgIndirect(this, nStyle, cRect.Height(), TRUE);
-   m_pPinYinCombobox->SetAutoHide(FALSE);
+ 
+   m_pPinYinCombobox->Create(nStyle, cRect, this, 133);
+   //m_pPinYinCombobox->CreateDlgIndirect(this, nStyle, cRect.Height(), TRUE);
+   //m_pPinYinCombobox->SetAutoHide(FALSE);
 
-   m_pPinYinCombobox->Init(cRect, _T("123"), 0, 2, TRUE, TRUE);
-   //m_pPinYinCombobox->Init();
+   //CRect rtDlg;
+   //GetWindowRect(rtDlg);
+  // m_pPinYinCombobox->Init(cRect, _T("123"), 0, 2, TRUE, TRUE, rtDlg);
+   m_pPinYinCombobox->Init();
 
 
    m_pPinYinCombobox->ShowWindow(SW_SHOW);
