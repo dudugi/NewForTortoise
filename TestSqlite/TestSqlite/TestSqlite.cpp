@@ -48,7 +48,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
          {
             std::vector<CString> vecNeedleNames;
-            if (!GetNeedleModNames(_T("D:\\svnD\\QL-Cloth6-20190216\\KDS\\制版模块\\用户文件\\制版\\用户配置\\UserModDb.db"),
+            if (!GetNeedleModNames(_T("C:\\Users\\duchen\\Documents\\Qili\\其它文件\\UserModDb.db"),
                &vecNeedleNames))
             {
                return 0;
